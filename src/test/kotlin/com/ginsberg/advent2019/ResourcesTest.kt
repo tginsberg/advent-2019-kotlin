@@ -36,7 +36,7 @@ class ResourcesTest {
     }
 
     @Nested
-    inner class ResourceAsListTests() {
+    inner class ResourceAsListTests {
         @Test
         fun `reads lines`() {
             assertThat(resourceAsList("read_file_test_1.txt"))
