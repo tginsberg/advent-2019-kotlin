@@ -10,11 +10,11 @@ Past years, also in Kotlin:
  * 2017 - [GitHub](https://github.com/tginsberg/advent-2017-kotlin/) and [Blog Posts](https://todd.ginsberg.com/post/advent-of-code/2017/)
  * 2018 - [GitHub](https://github.com/tginsberg/advent-2018-kotlin/) and [Blog Posts](https://todd.ginsberg.com/post/advent-of-code/2018/)
 
-<!--
+
 #### Daily Solution Index for 2019
 |   Day   | Title                                         |  Links                                       |
 | --------|-----------------------------------------------|--------------------------------------------- |
-|    1    | ???                                           | [\[Blog Post\]](https://todd.ginsberg.com/post/advent-of-code/2019/day1/) [\[Code\]](https://github.com/tginsberg/advent-2019-kotlin/blob/master/src/main/kotlin/com/ginsberg/advent2019/Day01.kt) [\[AoC\]](http://adventofcode.com/2019/day/1) |
--->
+|    1    | The Tyranny of the Rocket Equation            | [\[Blog Post\]](https://todd.ginsberg.com/post/advent-of-code/2019/day1/) [\[Code\]](https://github.com/tginsberg/advent-2019-kotlin/blob/master/src/main/kotlin/com/ginsberg/advent2019/Day01.kt) [\[AoC\]](http://adventofcode.com/2019/day/1) |
+
 
 Copyright &copy; 2019 by Todd Ginsberg.
