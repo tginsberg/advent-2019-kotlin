@@ -21,11 +21,11 @@ class Day01(input: List<String>) {
 
     private fun Int.fuel(): Int = this / 3 - 2
 
-    private fun Int.fuelWithFuel(carry: Int = 0): Int =
+    private fun Int.fuelWithFuel(): Int =
         if(this < 7)  {
-            carry
+            0
         } else {
             val fuel = this.fuel()
-            fuel.fuelWithFuel(carry + fuel)
+            fuel + fuel.fuelWithFuel()
         }
 }
