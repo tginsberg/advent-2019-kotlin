@@ -15,6 +15,7 @@ Past years, also in Kotlin:
 |   Day   | Title                                         |  Links                                       |
 | --------|-----------------------------------------------|--------------------------------------------- |
 |    1    | The Tyranny of the Rocket Equation            | [\[Blog Post\]](https://todd.ginsberg.com/post/advent-of-code/2019/day1/) [\[Code\]](https://github.com/tginsberg/advent-2019-kotlin/blob/master/src/main/kotlin/com/ginsberg/advent2019/Day01.kt) [\[AoC\]](http://adventofcode.com/2019/day/1) |
+|    2    | 1202 Program Alarm                            | [\[Blog Post\]](https://todd.ginsberg.com/post/advent-of-code/2019/day2/) [\[Code\]](https://github.com/tginsberg/advent-2019-kotlin/blob/master/src/main/kotlin/com/ginsberg/advent2019/Day02.kt) [\[AoC\]](http://adventofcode.com/2019/day/2) |
 
 
 Copyright &copy; 2019 by Todd Ginsberg.
