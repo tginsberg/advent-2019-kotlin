@@ -19,10 +19,10 @@ class Day01(input: List<String>) {
     fun solvePart2(): Int =
         modules.sumBy { it.fuelWithFuel() }
 
-    private fun Int.fuel(): Int = this / 3 - 2
+    private fun Int.fuel(): Int = (this / 3) - 2
 
     private fun Int.fuelWithFuel(): Int =
-        if(this < 7)  {
+        if(this < 9)  {
             0
         } else {
             val fuel = this.fuel()
