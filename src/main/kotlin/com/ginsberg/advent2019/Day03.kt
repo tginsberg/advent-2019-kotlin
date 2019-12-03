@@ -13,9 +13,9 @@ import java.lang.IllegalArgumentException
 
 class Day03(input: List<String>) {
 
-    private val wire1 = parseWire(input[0])
-    private val wire2 = parseWire(input[1])
-    private val intersections = wire1.intersect(wire2)
+    private val wire1: List<Point2D> = parseWire(input[0])
+    private val wire2: List<Point2D> = parseWire(input[1])
+    private val intersections: Set<Point2D> = wire1.intersect(wire2)
 
     fun solvePart1(): Int =
         intersections.map { it.distanceTo(Point2D.ORIGIN) }.min()!!
@@ -27,11 +27,11 @@ class Day03(input: List<String>) {
 
 
     private fun parseWire(line: String): List<Point2D> {
-        var current = Point2D(0,0)
+        var current = Point2D.ORIGIN
         return line.split(",").flatMap {
             val direction = it.first()
-            val length = it.drop(1).toInt()
-            (0 until length).map {
+            val steps = it.drop(1).toInt()
+            (0 until steps).map {
                 val next = when(direction) {
                     'U' -> current.up
                     'D' -> current.down
