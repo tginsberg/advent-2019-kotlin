@@ -4,6 +4,7 @@
 
 package com.ginsberg.advent2019
 
+import com.ginsberg.advent2019.Resources.resourceAsString
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Nested
@@ -12,7 +13,7 @@ import org.junit.jupiter.api.Test
 @DisplayName("Day 4")
 class Day04Test {
     // Given
-    private val inputRange = Resources.resourceAsString("day4.txt").split("-").let {
+    private val inputRange = resourceAsString("day4.txt").split("-").let {
         it[0].toInt()..it[1].toInt()
     }
 
