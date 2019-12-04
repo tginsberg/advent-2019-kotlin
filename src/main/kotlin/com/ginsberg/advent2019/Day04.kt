@@ -19,7 +19,7 @@ class Day04(private val range: IntRange) {
     fun solvePart2(): Int =
         range
             .map { it.toString() }
-            .count { isSorted(it) && containsMatchingPair(it) && containsIsolatedPair(it) }
+            .count { isSorted(it) && containsIsolatedPair(it) }
 
     private fun isSorted(input: String): Boolean =
         input.zipWithNext().all { it.first <= it.second }
