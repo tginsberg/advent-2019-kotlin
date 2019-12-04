@@ -23,10 +23,10 @@ class Point2DTest {
         @Test
         @DisplayName("Simple distance")
         fun simpleDistance() {
-            assertThat(Point2D.ORIGIN.distanceTo(Point2D.ORIGIN.up)).isOne()
-            assertThat(Point2D.ORIGIN.distanceTo(Point2D.ORIGIN.down)).isOne()
-            assertThat(Point2D.ORIGIN.distanceTo(Point2D.ORIGIN.left)).isOne()
-            assertThat(Point2D.ORIGIN.distanceTo(Point2D.ORIGIN.right)).isOne()
+            assertThat(Point2D.ORIGIN.distanceTo(Point2D.ORIGIN.up())).isOne()
+            assertThat(Point2D.ORIGIN.distanceTo(Point2D.ORIGIN.down())).isOne()
+            assertThat(Point2D.ORIGIN.distanceTo(Point2D.ORIGIN.left())).isOne()
+            assertThat(Point2D.ORIGIN.distanceTo(Point2D.ORIGIN.right())).isOne()
         }
 
         @Test
@@ -45,25 +45,25 @@ class Point2DTest {
         @Test
         @DisplayName("Up")
         fun upMovesUp() {
-            assertThat(Point2D.ORIGIN.up).isEqualTo(Point2D(0, 1))
+            assertThat(Point2D.ORIGIN.up()).isEqualTo(Point2D(0, 1))
         }
 
         @Test
         @DisplayName("Down")
         fun downMovesDown() {
-            assertThat(Point2D.ORIGIN.down).isEqualTo(Point2D(0, -1))
+            assertThat(Point2D.ORIGIN.down()).isEqualTo(Point2D(0, -1))
         }
 
         @Test
         @DisplayName("Left")
         fun leftMovesLeft() {
-            assertThat(Point2D.ORIGIN.left).isEqualTo(Point2D(-1, 0))
+            assertThat(Point2D.ORIGIN.left()).isEqualTo(Point2D(-1, 0))
         }
 
         @Test
         @DisplayName("Right")
         fun rightMovesRight() {
-            assertThat(Point2D.ORIGIN.right).isEqualTo(Point2D(1, 0))
+            assertThat(Point2D.ORIGIN.right()).isEqualTo(Point2D(1, 0))
         }
     }
 }

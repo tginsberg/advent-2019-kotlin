@@ -33,10 +33,10 @@ class Day03(input: List<String>) {
             val steps = it.drop(1).toInt()
             (0 until steps).map {
                 val next = when(direction) {
-                    'U' -> current.up
-                    'D' -> current.down
-                    'L' -> current.left
-                    'R' -> current.right
+                    'U' -> current.up()
+                    'D' -> current.down()
+                    'L' -> current.left()
+                    'R' -> current.right()
                     else -> throw IllegalArgumentException("Invalid direction: $direction")
                 }
                 current = next
