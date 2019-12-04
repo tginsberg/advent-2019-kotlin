@@ -16,7 +16,8 @@ Past years, also in Kotlin:
 | --------|-----------------------------------------------|--------------------------------------------- |
 |    1    | The Tyranny of the Rocket Equation            | [\[Blog Post\]](https://todd.ginsberg.com/post/advent-of-code/2019/day1/) [\[Code\]](https://github.com/tginsberg/advent-2019-kotlin/blob/master/src/main/kotlin/com/ginsberg/advent2019/Day01.kt) [\[AoC\]](http://adventofcode.com/2019/day/1) |
 |    2    | 1202 Program Alarm                            | [\[Blog Post\]](https://todd.ginsberg.com/post/advent-of-code/2019/day2/) [\[Code\]](https://github.com/tginsberg/advent-2019-kotlin/blob/master/src/main/kotlin/com/ginsberg/advent2019/Day02.kt) [\[AoC\]](http://adventofcode.com/2019/day/2) |
-|    3    | Crossed Wires                                 | [Blog Post Coming Soon] [\[Code\]](https://github.com/tginsberg/advent-2019-kotlin/blob/master/src/main/kotlin/com/ginsberg/advent2019/Day03.kt) [\[AoC\]](http://adventofcode.com/2019/day/3) |
-
+|    3    | Crossed Wires                                 | [\[Blog Post\]](https://todd.ginsberg.com/post/advent-of-code/2019/day3/) [\[Code\]](https://github.com/tginsberg/advent-2019-kotlin/blob/master/src/main/kotlin/com/ginsberg/advent2019/Day03.kt) [\[AoC\]](http://adventofcode.com/2019/day/3) |
+|    4    | Secure Container                              | [Blog Post Later Today] [\[Code\]](https://github.com/tginsberg/advent-2019-kotlin/blob/master/src/main/kotlin/com/ginsberg/advent2019/Day04.kt) [\[AoC\]](http://adventofcode.com/2019/day/4) |
+                     
 
 Copyright &copy; 2019 by Todd Ginsberg.
