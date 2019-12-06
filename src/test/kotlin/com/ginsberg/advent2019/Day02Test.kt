@@ -57,4 +57,35 @@ class Day02Test {
             assertThat(answer).isEqualTo(4_847)
         }
     }
+
+    @Nested
+    @DisplayName("IntCode Version")
+    inner class IntCodeVersion {
+
+        @Test
+        @DisplayName("Part 1")
+        fun `Actual answer Part 1`() {
+            // Given
+            val input = Resources.resourceAsString("day2.txt")
+
+            // When
+            val answer = Day02IntCode(input).solvePart1(12, 2)
+
+            // Then
+            assertThat(answer).isEqualTo(5_110_675)
+        }
+
+        @Test
+        @DisplayName("Part 2")
+        fun `Actual answer Part 2`() {
+            // Given
+            val input = Resources.resourceAsString("day2.txt")
+
+            // When
+            val answer = Day02IntCode(input).solvePart2()
+
+            // Then
+            assertThat(answer).isEqualTo(4_847)
+        }
+    }
 }
