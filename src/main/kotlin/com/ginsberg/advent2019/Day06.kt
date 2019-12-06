@@ -3,7 +3,7 @@
  */
 
 /**
- * Advent of Code 2019, Day 5 - Universal Orbit Map
+ * Advent of Code 2019, Day 6 - Universal Orbit Map
  * Problem Description: http://adventofcode.com/2019/day/6
  * Blog Post/Commentary: https://todd.ginsberg.com/post/advent-of-code/2019/day6/
  */

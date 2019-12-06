@@ -70,7 +70,7 @@ class Day03Test {
             val answer = Day03(input).solvePart1()
 
             // Then
-            assertThat(answer).isEqualTo(1225)
+            assertThat(answer).isEqualTo(1_225)
         }
     }
 
