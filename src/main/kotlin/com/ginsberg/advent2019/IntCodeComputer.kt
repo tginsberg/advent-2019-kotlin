@@ -5,24 +5,48 @@
 package com.ginsberg.advent2019
 
 import com.ginsberg.advent2019.IntCodeInstruction.Halt
+import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.channels.ReceiveChannel
+import kotlinx.coroutines.channels.toList
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.runBlocking
 import kotlin.math.pow
 
 class IntCodeComputer(private val program: IntArray,
-                      private val input: MutableList<Int> = mutableListOf()
+                      val input: Channel<Int>
 ) {
-    // Single input constructor
-    constructor(program: IntArray, singleInput: Int) : this(program, mutableListOf(singleInput))
 
-    fun run(): List<Int> {
+    val output: Channel<Int> = Channel(Channel.UNLIMITED)
+
+    /**
+     * These were constructors before we made this class work with coroutines. In
+     * order to not have to change our existing calls, we've defined two new versions
+     * of the invoke operator so callers can't tell the difference!
+     */
+    companion object {
+        operator fun invoke(program: IntArray, singleInput: Int) = runBlocking {
+            IntCodeComputer(program, mutableListOf(singleInput).toChannel())
+        }
+
+        operator fun invoke(program: IntArray, input: MutableList<Int> = mutableListOf()) = runBlocking {
+            IntCodeComputer(program, input.toChannel())
+        }
+    }
+
+    fun run(): List<Int> = runBlocking {
+        runSuspending()
+        output.toList()
+    }
+
+    suspend fun runSuspending() {
         var instructionPointer = 0
-        val output = mutableListOf<Int>()
 
         do {
             val nextOp = IntCodeInstruction(instructionPointer, program)
             instructionPointer += nextOp.execute(instructionPointer, program, input, output)
         } while (nextOp !is Halt)
 
-        return output
+        output.close()
     }
 
 }
@@ -31,7 +55,7 @@ sealed class IntCodeInstruction(internal val nextInstructionOffset: Int) {
 
     companion object {
         operator fun invoke(pointer: Int, program: IntArray): IntCodeInstruction {
-            return when ( val operation = program[pointer] % 100) {
+            return when (val operation = program[pointer] % 100) {
                 1 -> Add
                 2 -> Multiply
                 3 -> Input
@@ -46,10 +70,10 @@ sealed class IntCodeInstruction(internal val nextInstructionOffset: Int) {
         }
     }
 
-    abstract fun execute(pointer: Int, program: IntArray, input: MutableList<Int>, output: MutableList<Int>): Int
+    abstract suspend fun execute(pointer: Int, program: IntArray, input: ReceiveChannel<Int>, output: Channel<Int>): Int
 
     object Add : IntCodeInstruction(4) {
-        override fun execute(pointer: Int, program: IntArray, input: MutableList<Int>, output: MutableList<Int>): Int {
+        override suspend fun execute(pointer: Int, program: IntArray, input: ReceiveChannel<Int>, output: Channel<Int>): Int {
             val writeTo = program[pointer + 3]
             program[writeTo] = program.param(1, pointer) + program.param(2, pointer)
             return nextInstructionOffset
@@ -57,7 +81,7 @@ sealed class IntCodeInstruction(internal val nextInstructionOffset: Int) {
     }
 
     object Multiply : IntCodeInstruction(4) {
-        override fun execute(pointer: Int, program: IntArray, input: MutableList<Int>, output: MutableList<Int>): Int {
+        override suspend fun execute(pointer: Int, program: IntArray, input: ReceiveChannel<Int>, output: Channel<Int>): Int {
             val writeTo = program[pointer + 3]
             program[writeTo] = program.param(1, pointer) * program.param(2, pointer)
             return nextInstructionOffset
@@ -65,22 +89,22 @@ sealed class IntCodeInstruction(internal val nextInstructionOffset: Int) {
     }
 
     object Input : IntCodeInstruction(2) {
-        override fun execute(pointer: Int, program: IntArray, input: MutableList<Int>, output: MutableList<Int>): Int {
+        override suspend fun execute(pointer: Int, program: IntArray, input: ReceiveChannel<Int>, output: Channel<Int>): Int {
             val writeTo = program[pointer + 1]
-            program[writeTo] = input.removeAt(0)
+            program[writeTo] = input.receive()
             return nextInstructionOffset
         }
     }
 
     object Output : IntCodeInstruction(2) {
-        override fun execute(pointer: Int, program: IntArray, input: MutableList<Int>, output: MutableList<Int>): Int {
-            output.add(program.param(1, pointer))
+        override suspend fun execute(pointer: Int, program: IntArray, input: ReceiveChannel<Int>, output: Channel<Int>): Int {
+            output.send(program.param(1, pointer))
             return nextInstructionOffset
         }
     }
 
     object JumpIfTrue : IntCodeInstruction(3) {
-        override fun execute(pointer: Int, program: IntArray, input: MutableList<Int>, output: MutableList<Int>): Int {
+        override suspend fun execute(pointer: Int, program: IntArray, input: ReceiveChannel<Int>, output: Channel<Int>): Int {
             val a = program.param(1, pointer)
             val b = program.param(2, pointer)
             return if (a != 0) b - pointer else nextInstructionOffset
@@ -88,7 +112,7 @@ sealed class IntCodeInstruction(internal val nextInstructionOffset: Int) {
     }
 
     object JumpIfFalse : IntCodeInstruction(3) {
-        override fun execute(pointer: Int, program: IntArray, input: MutableList<Int>, output: MutableList<Int>): Int {
+        override suspend fun execute(pointer: Int, program: IntArray, input: ReceiveChannel<Int>, output: Channel<Int>): Int {
             val a = program.param(1, pointer)
             val b = program.param(2, pointer)
             return if (a == 0) b - pointer else nextInstructionOffset
@@ -96,7 +120,7 @@ sealed class IntCodeInstruction(internal val nextInstructionOffset: Int) {
     }
 
     object LessThan : IntCodeInstruction(4) {
-        override fun execute(pointer: Int, program: IntArray, input: MutableList<Int>, output: MutableList<Int>): Int {
+        override suspend fun execute(pointer: Int, program: IntArray, input: ReceiveChannel<Int>, output: Channel<Int>): Int {
             val writeTo = program[pointer + 3]
             program[writeTo] = if (program.param(1, pointer) < program.param(2, pointer)) 1 else 0
             return nextInstructionOffset
@@ -104,7 +128,7 @@ sealed class IntCodeInstruction(internal val nextInstructionOffset: Int) {
     }
 
     object Equals : IntCodeInstruction(4) {
-        override fun execute(pointer: Int, program: IntArray, input: MutableList<Int>, output: MutableList<Int>): Int {
+        override suspend fun execute(pointer: Int, program: IntArray, input: ReceiveChannel<Int>, output: Channel<Int>): Int {
             val writeTo = program[pointer + 3]
             program[writeTo] = if (program.param(1, pointer) == program.param(2, pointer)) 1 else 0
             return nextInstructionOffset
@@ -112,7 +136,7 @@ sealed class IntCodeInstruction(internal val nextInstructionOffset: Int) {
     }
 
     object Halt : IntCodeInstruction(1) {
-        override fun execute(pointer: Int, program: IntArray, input: MutableList<Int>, output: MutableList<Int>): Int = 0
+        override suspend fun execute(pointer: Int, program: IntArray, input: ReceiveChannel<Int>, output: Channel<Int>): Int = 0
     }
 
     internal fun IntArray.param(paramNo: Int, offset: Int): Int =
