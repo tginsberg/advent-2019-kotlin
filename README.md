@@ -22,6 +22,7 @@ Past years, also in Kotlin:
 |    5    | Sunny with a Chance of Asteroids              | [\[Blog Post\]](https://todd.ginsberg.com/post/advent-of-code/2019/day5/) [\[Code\]](https://github.com/tginsberg/advent-2019-kotlin/blob/master/src/main/kotlin/com/ginsberg/advent2019/Day05.kt) [\[AoC\]](http://adventofcode.com/2019/day/5) |
 |    6    | Universal Orbit Map                           | [\[Blog Post\]](https://todd.ginsberg.com/post/advent-of-code/2019/day6/) [\[Code\]](https://github.com/tginsberg/advent-2019-kotlin/blob/master/src/main/kotlin/com/ginsberg/advent2019/Day06.kt) [\[AoC\]](http://adventofcode.com/2019/day/6) |
 |    7    | Amplification Circuit                         | [\[Blog Post\]](https://todd.ginsberg.com/post/advent-of-code/2019/day7/) [\[Code\]](https://github.com/tginsberg/advent-2019-kotlin/blob/master/src/main/kotlin/com/ginsberg/advent2019/Day07.kt) [\[AoC\]](http://adventofcode.com/2019/day/7) |
+|    8    | Space Image Format                            | [\[Blog Post\]](https://todd.ginsberg.com/post/advent-of-code/2019/day8/) [\[Code\]](https://github.com/tginsberg/advent-2019-kotlin/blob/master/src/main/kotlin/com/ginsberg/advent2019/Day08.kt) [\[AoC\]](http://adventofcode.com/2019/day/8) |
         
 
 Copyright &copy; 2019 by Todd Ginsberg.
