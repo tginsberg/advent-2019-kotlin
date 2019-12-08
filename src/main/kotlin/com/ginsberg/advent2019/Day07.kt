@@ -15,6 +15,7 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
 class Day07(input: String) {
@@ -44,15 +45,14 @@ class Day07(input: String) {
         val e = IntCodeComputer(program.copyOf(), d.output.andSend(settings[4]))
         val channelSpy = ChannelSpy(e.output, a.input)
 
-        val spy: Deferred<Unit> = async { channelSpy.listen() }
-        awaitAll(
-            async { a.runSuspending() },
-            async { b.runSuspending() },
-            async { c.runSuspending() },
-            async { d.runSuspending() },
-            async { e.runSuspending() }
-        )
-        spy.cancel()
+        coroutineScope {
+            launch { channelSpy.listen() }
+            launch { a.runSuspending() }
+            launch { b.runSuspending() }
+            launch { c.runSuspending() }
+            launch { d.runSuspending() }
+            launch { e.runSuspending() }
+        }
         channelSpy.spy.receive()
     }
 
