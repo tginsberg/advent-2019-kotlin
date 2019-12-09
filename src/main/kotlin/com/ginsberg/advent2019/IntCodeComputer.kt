@@ -8,7 +8,6 @@ import com.ginsberg.advent2019.IntCodeInstruction.Halt
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.channels.ReceiveChannel
 import kotlinx.coroutines.channels.toList
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.runBlocking
 import kotlin.math.pow
 
