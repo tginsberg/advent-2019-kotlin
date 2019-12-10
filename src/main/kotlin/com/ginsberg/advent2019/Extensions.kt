@@ -19,3 +19,6 @@ fun <T> List<T>.permutations(): List<List<T>> =
 
 fun <T> List<T>.toChannel(capacity: Int = Channel.UNLIMITED): Channel<T> =
     Channel<T>(capacity).also { this.forEach { e -> it.offer(e) } }
+
+fun <T> Collection<Collection<T>>.flattenRoundRobin(): List<T> =
+    this.flatMap { it.withIndex() }.sortedBy { it.index }.map { it.value }

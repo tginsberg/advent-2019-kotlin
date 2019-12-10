@@ -4,7 +4,9 @@
 
 package com.ginsberg.advent2019
 
+import java.lang.Math.toDegrees
 import kotlin.math.abs
+import kotlin.math.atan2
 
 data class Point2D(val x: Int, val y: Int) {
 
@@ -18,6 +20,17 @@ data class Point2D(val x: Int, val y: Int) {
 
     fun distanceTo(other: Point2D): Int =
         abs(x - other.x) + abs(y - other.y)
+
+    // Note: Tested only with x,y in screen mode (upper left)
+    fun angleTo(other: Point2D): Double {
+        val d = toDegrees(
+            atan2(
+                (other.y - y).toDouble(),
+                (other.x - x).toDouble()
+            )
+        ) + 90
+        return if (d < 0) d + 360 else d
+    }
 
     companion object {
         val ORIGIN = Point2D(0, 0)

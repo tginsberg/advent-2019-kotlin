@@ -66,4 +66,32 @@ class Point2DTest {
             assertThat(Point2D.ORIGIN.right()).isEqualTo(Point2D(1, 0))
         }
     }
+
+    @Nested
+    @DisplayName("Angles (Degrees)")
+    inner class AngleDegrees {
+        @Test
+        @DisplayName("0°")
+        fun degreesN() {
+            assertThat(Point2D.ORIGIN.angleTo(Point2D.ORIGIN.down())).isEqualTo(0.0)
+        }
+
+        @Test
+        @DisplayName("90°")
+        fun degreesE() {
+            assertThat(Point2D.ORIGIN.angleTo(Point2D.ORIGIN.right())).isEqualTo(90.0)
+        }
+
+        @Test
+        @DisplayName("180°")
+        fun degreesS() {
+            assertThat(Point2D.ORIGIN.angleTo(Point2D.ORIGIN.up())).isEqualTo(180.0)
+        }
+
+        @Test
+        @DisplayName("270°")
+        fun degreesW() {
+            assertThat(Point2D.ORIGIN.angleTo(Point2D.ORIGIN.left())).isEqualTo(270.0)
+        }
+    }
 }
