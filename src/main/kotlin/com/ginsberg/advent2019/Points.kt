@@ -11,11 +11,8 @@ import kotlin.math.atan2
 data class Point2D(val x: Int, val y: Int) {
 
     fun up(): Point2D = copy(y = y + 1)
-
     fun down(): Point2D = copy(y = y - 1)
-
     fun left(): Point2D = copy(x = x - 1)
-
     fun right(): Point2D = copy(x = x + 1)
 
     fun distanceTo(other: Point2D): Int =
@@ -34,5 +31,11 @@ data class Point2D(val x: Int, val y: Int) {
 
     companion object {
         val ORIGIN = Point2D(0, 0)
+        val readerOrder: Comparator<Point2D> = Comparator { o1, o2 ->
+            when {
+                o1.y != o2.y -> o1.y - o2.y
+                else -> o1.x - o2.x
+            }
+        }
     }
 }
