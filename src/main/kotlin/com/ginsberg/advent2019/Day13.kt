@@ -25,17 +25,18 @@ class Day13(input: String) {
         .associateTo(mutableMapOf()) { it.index.toLong() to it.value.toLong() }
 
     fun solvePart1(): Int = runBlocking {
-        val board: MutableMap<Point2D, Int> = mutableMapOf()
+        var blocks = 0
         val computer = IntCodeComputerMk2(program = program, output = Channel(Channel.UNLIMITED))
         computer.runProgram()
 
         while (!computer.output.isClosedForReceive) {
-            board[Point2D(
-                computer.output.receive().toInt(),
-                computer.output.receive().toInt()
-            )] = computer.output.receive().toInt()
+            computer.output.receive()
+            computer.output.receive()
+            if(computer.output.receive().toInt() == block) {
+                blocks++
+            }
         }
-        board.count { it.value == block }
+        blocks
     }
 
     fun solvePart2(): Int = runBlocking {
