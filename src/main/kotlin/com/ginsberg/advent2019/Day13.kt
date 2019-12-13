@@ -10,7 +10,6 @@
 package com.ginsberg.advent2019
 
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.async
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -32,7 +31,7 @@ class Day13(input: String) {
         while (!computer.output.isClosedForReceive) {
             computer.output.receive()
             computer.output.receive()
-            if(computer.output.receive().toInt() == block) {
+            if (computer.output.receive().toInt() == block) {
                 blocks++
             }
         }
@@ -46,23 +45,23 @@ class Day13(input: String) {
         launch {
             computer.runProgram()
         }
-        async {
-            var paddleX = 0
-            var score = 0
-            while (!computer.output.isClosedForReceive) {
-                val x = computer.output.receive().toInt()
-                computer.output.receive()
-                val item = computer.output.receive().toInt()
-                when {
-                    x == -1 -> score = item
-                    item == paddle -> paddleX = x
-                    item == ball -> {
-                        computer.input.send((x - paddleX).sign.toLong())
-                    }
+
+        var paddleX = 0
+        var score = 0
+        while (!computer.output.isClosedForReceive) {
+            val x = computer.output.receive().toInt()
+            computer.output.receive()
+            val item = computer.output.receive().toInt()
+            when {
+                x == -1 -> score = item
+                item == paddle -> paddleX = x
+                item == ball -> {
+                    computer.input.send((x - paddleX).sign.toLong())
                 }
             }
-            score
-        }.await()
+        }
+        score
+
     }
 
     companion object {
