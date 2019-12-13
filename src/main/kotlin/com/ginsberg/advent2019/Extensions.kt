@@ -22,3 +22,10 @@ fun <T> List<T>.toChannel(capacity: Int = Channel.UNLIMITED): Channel<T> =
 
 fun <T> Collection<Collection<T>>.flattenRoundRobin(): List<T> =
     this.flatMap { it.withIndex() }.sortedBy { it.index }.map { it.value }
+
+fun <T> List<T>.everyPair(): List<Pair<T, T>> =
+    this.mapIndexed { idx, left ->
+        this.drop(idx+1).map { right ->
+            Pair(left, right)
+        }
+    }.flatten()
