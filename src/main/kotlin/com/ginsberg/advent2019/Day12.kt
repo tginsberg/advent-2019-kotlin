@@ -3,9 +3,9 @@
  */
 
 /**
- * Advent of Code 2019, Day 11 - Space Police
- * Problem Description: http://adventofcode.com/2019/day/11
- * Blog Post/Commentary: https://todd.ginsberg.com/post/advent-of-code/2019/day11/
+ * Advent of Code 2019, Day 12 - The N-Body Problem
+ * Problem Description: http://adventofcode.com/2019/day/12
+ * Blog Post/Commentary: https://todd.ginsberg.com/post/advent-of-code/2019/day12/
  */
 package com.ginsberg.advent2019
 
