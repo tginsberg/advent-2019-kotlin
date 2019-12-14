@@ -61,7 +61,6 @@ class Day13(input: String) {
             }
         }
         score
-
     }
 
     companion object {

@@ -10,7 +10,6 @@
 package com.ginsberg.advent2019
 
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
@@ -41,29 +40,27 @@ class Day11(input: String) {
     private fun paintShip(startingWith: Long = black) = runBlocking {
         val ship = mutableMapOf(Point2D.ORIGIN to 0L)
         val computer = IntCodeComputerMk2(program)
-        coroutineScope {
-            launch {
-                computer.runProgram()
-            }
-            launch {
-                var location: Point2D = Point2D.ORIGIN
-                var screenDirection: ScreenDirection = ScreenDirection.North
-                computer.input.send(startingWith)
-                while (!computer.output.isClosedForReceive) {
-                    val colorMsg = computer.output.receive()
-                    ship[location] = colorMsg
-                    when (val dir = computer.output.receive()) {
-                        left -> screenDirection.turnAndMoveLeft(location)
-                        right -> screenDirection.turnAndMoveRight(location)
-                        else -> throw IllegalStateException("Invalid direction: $dir")
-                    }.apply {
-                        screenDirection = first
-                        location = second
-                    }
-                    computer.input.send(ship.getOrDefault(location, black))
-                }
-            }
+        var location: Point2D = Point2D.ORIGIN
+        var screenDirection: ScreenDirection = ScreenDirection.North
+        launch {
+            computer.runProgram()
         }
+
+        computer.input.send(startingWith)
+        while (!computer.output.isClosedForReceive) {
+            val colorMsg = computer.output.receive()
+            ship[location] = colorMsg
+            when (val dir = computer.output.receive()) {
+                left -> screenDirection.turnAndMoveLeft(location)
+                right -> screenDirection.turnAndMoveRight(location)
+                else -> throw IllegalStateException("Invalid direction: $dir")
+            }.apply {
+                screenDirection = first
+                location = second
+            }
+            computer.input.send(ship.getOrDefault(location, black))
+        }
+
         ship
     }
 
