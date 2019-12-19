@@ -25,7 +25,10 @@ fun <T> Collection<Collection<T>>.flattenRoundRobin(): List<T> =
 
 fun <T> List<T>.everyPair(): List<Pair<T, T>> =
     this.mapIndexed { idx, left ->
-        this.drop(idx+1).map { right ->
+        this.drop(idx + 1).map { right ->
             Pair(left, right)
         }
     }.flatten()
+
+fun <T, R> MutableMap<T, R>.copyOf(): MutableMap<T, R> =
+    mutableMapOf<T, R>().also { it.putAll(this) }
