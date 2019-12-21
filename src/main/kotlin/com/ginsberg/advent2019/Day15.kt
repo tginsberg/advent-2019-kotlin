@@ -24,10 +24,10 @@ class Day15(input: String) {
     private val oxygenLocation: Point2D = maze.entries.first { it.value == oxygen }.key
 
     fun solvePart1(): Int =
-        findAllPaths(Point2D.ORIGIN, oxygenLocation) { maze.getOrDefault(it, wall) != wall }.minBy { it.size }!!.size - 1
+        findPaths(Point2D.ORIGIN, oxygenLocation) { maze.getOrDefault(it, wall) != wall }.first().size - 1
 
     fun solvePart2(): Int =
-        findAllPaths(oxygenLocation, null) { maze.getOrDefault(it, wall) != wall }.maxBy { it.size }!!.size - 1
+        findPaths(oxygenLocation, null) { maze.getOrDefault(it, wall) != wall }.last().size - 1
 
     private fun maze() = runBlocking {
         val job = async {
