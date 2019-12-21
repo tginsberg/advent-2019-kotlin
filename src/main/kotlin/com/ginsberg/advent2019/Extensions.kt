@@ -32,3 +32,9 @@ fun <T> List<T>.everyPair(): List<Pair<T, T>> =
 
 fun <T, R> MutableMap<T, R>.copyOf(): MutableMap<T, R> =
     mutableMapOf<T, R>().also { it.putAll(this) }
+
+fun <T> MutableList<T>.copyOf(): MutableList<T> =
+    mutableListOf<T>().also { it.addAll(this) }
+
+fun List<String>.getOrNull(point: Point2D): Char? =
+    this.getOrNull(point.y)?.getOrNull(point.x)
