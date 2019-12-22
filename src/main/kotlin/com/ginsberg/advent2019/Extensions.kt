@@ -38,3 +38,15 @@ fun <T> MutableList<T>.copyOf(): MutableList<T> =
 
 fun List<String>.getOrNull(point: Point2D): Char? =
     this.getOrNull(point.y)?.getOrNull(point.x)
+
+fun <T> Map<Point2D, T>.print() {
+    val maxX = this.keys.maxBy { it.x }!!.x
+    val maxY = this.keys.maxBy { it.y }!!.y
+
+    (0..maxY).forEach { y ->
+        (0..maxX).forEach { x ->
+            print(this.getOrDefault(Point2D(x, y), ' '))
+        }
+        println()
+    }
+}
