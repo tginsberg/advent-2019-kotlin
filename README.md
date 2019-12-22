@@ -34,7 +34,7 @@ Past years, also in Kotlin:
 |    17   | Coming Soon (was traveling)                   |  |
 |    18   | Coming Soon (was traveling)                   |  |
 |    19   | Tractor Beam                                  | [\[Blog Post\]](https://todd.ginsberg.com/post/advent-of-code/2019/day19/) [\[Code\]](https://github.com/tginsberg/advent-2019-kotlin/blob/master/src/main/kotlin/com/ginsberg/advent2019/Day19.kt) [\[AoC\]](http://adventofcode.com/2019/day/19) |
-|    20   | Coming Soon (was traveling)                   |  |         
+|    20   | Donut Maze                                    | Blog coming soon [\[Code\]](https://github.com/tginsberg/advent-2019-kotlin/blob/master/src/main/kotlin/com/ginsberg/advent2019/Day20.kt) [\[AoC\]](http://adventofcode.com/2019/day/20) |
 |    21   | Springdroid Adventure                         | [\[Blog Post\]](https://todd.ginsberg.com/post/advent-of-code/2019/day21/) [\[Code\]](https://github.com/tginsberg/advent-2019-kotlin/blob/master/src/main/kotlin/com/ginsberg/advent2019/Day21.kt) [\[AoC\]](http://adventofcode.com/2019/day/21) |
 
 Copyright &copy; 2019 by Todd Ginsberg. 
