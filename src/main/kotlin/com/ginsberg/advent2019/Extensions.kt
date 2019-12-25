@@ -5,6 +5,9 @@
 package com.ginsberg.advent2019
 
 import kotlinx.coroutines.channels.Channel
+import java.math.BigInteger
+import java.util.BitSet
+
 
 fun <T> List<T>.permutations(): List<List<T>> =
     if (this.size <= 1) listOf(this)
@@ -50,3 +53,6 @@ fun <T> Map<Point2D, T>.print() {
         println()
     }
 }
+
+fun BitSet.toBigInteger(): BigInteger =
+    BigInteger(1, this.toByteArray().reversedArray())

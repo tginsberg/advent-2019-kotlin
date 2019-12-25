@@ -38,5 +38,6 @@ Past years, also in Kotlin:
 |    21   | Springdroid Adventure                         | [\[Blog Post\]](https://todd.ginsberg.com/post/advent-of-code/2019/day21/) [\[Code\]](https://github.com/tginsberg/advent-2019-kotlin/blob/master/src/main/kotlin/com/ginsberg/advent2019/Day21.kt) [\[AoC\]](http://adventofcode.com/2019/day/21) |
 |    22   | Coming Soon (finding good way to explain it!) |  |
 |    23   | Category Six                                  | [\[Blog Post\]](https://todd.ginsberg.com/post/advent-of-code/2019/day23/) [\[Code\]](https://github.com/tginsberg/advent-2019-kotlin/blob/master/src/main/kotlin/com/ginsberg/advent2019/Day23.kt) [\[AoC\]](http://adventofcode.com/2019/day/23) |
+|    24   | Planet of Discord                             | [\[Blog Post\]](https://todd.ginsberg.com/post/advent-of-code/2019/day24/) [\[Code\]](https://github.com/tginsberg/advent-2019-kotlin/blob/master/src/main/kotlin/com/ginsberg/advent2019/Day24.kt) [\[AoC\]](http://adventofcode.com/2019/day/24) |
 
 Copyright &copy; 2019 by Todd Ginsberg. 
