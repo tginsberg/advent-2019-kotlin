@@ -39,5 +39,6 @@ Past years, also in Kotlin:
 |    22   | Slam Shuffle                                  | [\[Blog Post\]](https://todd.ginsberg.com/post/advent-of-code/2019/day22/) [\[Code\]](https://github.com/tginsberg/advent-2019-kotlin/blob/master/src/main/kotlin/com/ginsberg/advent2019/Day22.kt) [\[AoC\]](http://adventofcode.com/2019/day/22) |
 |    23   | Category Six                                  | [\[Blog Post\]](https://todd.ginsberg.com/post/advent-of-code/2019/day23/) [\[Code\]](https://github.com/tginsberg/advent-2019-kotlin/blob/master/src/main/kotlin/com/ginsberg/advent2019/Day23.kt) [\[AoC\]](http://adventofcode.com/2019/day/23) |
 |    24   | Planet of Discord                             | [\[Blog Post\]](https://todd.ginsberg.com/post/advent-of-code/2019/day24/) [\[Code\]](https://github.com/tginsberg/advent-2019-kotlin/blob/master/src/main/kotlin/com/ginsberg/advent2019/Day24.kt) [\[AoC\]](http://adventofcode.com/2019/day/24) |
+|    25   | Cryostasis                                    | [\[Blog Post\]](https://todd.ginsberg.com/post/advent-of-code/2019/day25/) [\[Code\]](https://github.com/tginsberg/advent-2019-kotlin/blob/master/src/main/kotlin/com/ginsberg/advent2019/Day25.kt) [\[AoC\]](http://adventofcode.com/2019/day/25) |
 
 Copyright &copy; 2019 by Todd Ginsberg. 
